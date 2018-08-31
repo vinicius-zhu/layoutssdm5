@@ -14,5 +14,9 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_gravity="bottom|right"
+        android:background="@android:color/white"
+        android:text="IFSP São Carlos - SP"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="18sp" />
 </FrameLayout>
