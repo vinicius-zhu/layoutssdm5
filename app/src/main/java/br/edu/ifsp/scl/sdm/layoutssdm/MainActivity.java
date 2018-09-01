@@ -98,5 +98,6 @@ public class MainActivity extends AppCompatActivity {
         nomeEditText.setText("");
         telefoneEditText.setText("");
         emailEditText.setText("");
+        nomeEditText.requestFocus();
     }
 }
