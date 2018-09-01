@@ -32,4 +32,43 @@
         android:inputType="textEmailAddress"
         android:layout_below="@id/emailTextView"/>
 
+    <TextView
+        android:id="@+id/telefoneTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="Telefone"
+        android:layout_below="@id/emailEditText"/>
+
+    <EditText
+        android:id="@+id/telefoneEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:layout_below="@id/telefoneTextView"/>
+
+    <CheckBox
+        android:id="@+id/notificacoesCheckBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Receber notificações"
+        android:layout_below="@id/telefoneEditText"/>
+
+    <RadioGroup
+        android:id="@+id/notificacoesRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/notificacoesCheckBox">
+        <RadioButton
+            android:id="@+id/emailRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="E-mail"/>
+        <RadioButton
+            android:id="@+id/telefoneRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Telefone"/>
+    </RadioGroup>
+
 </RelativeLayout>
