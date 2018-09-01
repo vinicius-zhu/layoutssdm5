@@ -16,8 +16,6 @@ public class MainActivity extends AppCompatActivity {
 
     private CheckBox notificacoesCheckBox;
     private RadioGroup notificacoesRadioGroup;
-    private RadioButton emailRadioButton;
-    private RadioButton telefoneRadioButton;
     private EditText nomeEditText;
     private EditText telefoneEditText;
     private EditText emailEditText;
@@ -31,8 +29,6 @@ public class MainActivity extends AppCompatActivity {
 
         notificacoesCheckBox = findViewById(R.id.notificacoesCheckBox);
         notificacoesRadioGroup = findViewById(R.id.notificacoesRadioGroup);
-        emailRadioButton = findViewById(R.id.emailRadioButton);
-        telefoneRadioButton = findViewById(R.id.telefoneRadioButton);
         nomeEditText = findViewById(R.id.nomeEditText);
         telefoneEditText = findViewById(R.id.telefoneEditText);
         emailEditText = findViewById(R.id.emailEditText);
@@ -98,8 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void limparFormulario(View botao){
         notificacoesCheckBox.setChecked(false);
-        emailRadioButton.setChecked(false);
-        telefoneRadioButton.setChecked(false);
+        notificacoesRadioGroup.clearCheck();
         nomeEditText.setText("");
         telefoneEditText.setText("");
         emailEditText.setText("");
