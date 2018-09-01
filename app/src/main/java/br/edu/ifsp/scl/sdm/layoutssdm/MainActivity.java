@@ -81,6 +81,15 @@ public class MainActivity extends AppCompatActivity {
         super.onRestoreInstanceState(savedInstanceState);
 
         notificacoesCheckBox.setChecked(savedInstanceState.getBoolean(ESTADO_NOTIFICACAO_CHECKBOX, false));
+        // Exibe/Esconde radio group caso o evento implementado seja no OnClick
+        /*if (notificacoesCheckBox.isChecked())
+        {
+            notificacoesRadioGroup.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            notificacoesRadioGroup.setVisibility(View.GONE);
+        }*/
         int idRadioButtonSelecionado = savedInstanceState.getInt(NOTIFICACAO_RADIOBUTTON_SELECIONADO, -1);
         if (idRadioButtonSelecionado != -1) {
             notificacoesRadioGroup.check(idRadioButtonSelecionado);
