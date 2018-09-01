@@ -58,7 +58,8 @@
         android:id="@+id/notificacoesRadioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/notificacoesCheckBox">
+        android:layout_below="@id/notificacoesCheckBox"
+        android:visibility="gone">
         <RadioButton
             android:id="@+id/emailRadioButton"
             android:layout_width="match_parent"
@@ -70,5 +71,21 @@
             android:layout_height="wrap_content"
             android:text="Telefone"/>
     </RadioGroup>
+
+    <Button
+        android:id="@+id/limparButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Limpar"
+        android:onClick="limparFormulario"
+        android:layout_below="@id/notificacoesRadioGroup"/>
+
+    <Button
+        android:id="@+id/salvarButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Salvar"
+        android:layout_toRightOf="@id/limparButton"
+        android:layout_below="@id/notificacoesRadioGroup"/>
 
 </RelativeLayout>
