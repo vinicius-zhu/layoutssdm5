@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.relative_layout_activity_main);
+        setContentView(R.layout.linear_layout_activity_main);
 
 
         notificacoesCheckBox = findViewById(R.id.notificacoesCheckBox);
