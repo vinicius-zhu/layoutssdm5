@@ -43,10 +43,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+        <CheckBox
+            android:id="@+id/notificacoesCheckBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Receber notificações" />
         <RadioGroup
             android:id="@+id/notificacoesRadioGroup"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:visibility="gone">
             <RadioButton
                 android:id="@+id/emailRadioButton"
@@ -61,24 +68,26 @@
         </RadioGroup>
 
     </LinearLayout>
-    <CheckBox
-        android:id="@+id/notificacoesCheckBox"
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Receber notificações" />
+        android:orientation="horizontal">
 
+        <Button
+            android:id="@+id/limparButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Limpar"
+            android:onClick="limparFormulario" />
 
-
-    <Button
-        android:id="@+id/limparButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Limpar"
-        android:onClick="limparFormulario" />
-
-    <Button
-        android:id="@+id/salvarButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Salvar" />
+        <Button
+            android:id="@+id/salvarButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Salvar" />
+    </LinearLayout>
 </LinearLayout>
