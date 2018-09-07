@@ -2,6 +2,7 @@ package br.edu.ifsp.scl.sdm.layoutssdm;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText emailEditText;
     private LinearLayout telefoneLinearLayout;
     private ArrayList<View> telefoneArrayList;
+    private LayoutInflater layoutInflater;
 
 
     @Override
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         emailEditText = findViewById(R.id.emailEditText);
         telefoneLinearLayout = findViewById(R.id.telefoneLinearLayout);
         telefoneArrayList = new ArrayList<>();
+        layoutInflater = getLayoutInflater();
 
         // Exibindo/ocultando RadioGroup por evento de Click Listener
         /*
@@ -109,6 +112,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void adicionarTelefone(View botao){
+        if (botao.getId() == R.id.adicionarTelefoneButton){
 
+            View novoTelefoneLayout = layoutInflater.inflate(R.layout.novo_telefone_layout,null);
+            telefoneArrayList.add(novoTelefoneLayout);
+            telefoneLinearLayout.addView(novoTelefoneLayout);
+        }
     }
 }
