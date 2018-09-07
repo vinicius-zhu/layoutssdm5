@@ -6,8 +6,11 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private final String ESTADO_NOTIFICACAO_CHECKBOX = "ESTADO_NOTIFICACAO_CHECKBOX";
@@ -19,12 +22,14 @@ public class MainActivity extends AppCompatActivity {
     private EditText nomeEditText;
     private EditText telefoneEditText;
     private EditText emailEditText;
+    private LinearLayout telefoneLinearLayout;
+    private ArrayList<View> telefoneArrayList;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.grid_layout_activity_main);
+        setContentView(R.layout.scroll_view_activity_main);
 
 
         notificacoesCheckBox = findViewById(R.id.notificacoesCheckBox);
@@ -32,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
         nomeEditText = findViewById(R.id.nomeEditText);
         telefoneEditText = findViewById(R.id.telefoneEditText);
         emailEditText = findViewById(R.id.emailEditText);
+        telefoneLinearLayout = findViewById(R.id.telefoneLinearLayout);
+        telefoneArrayList = new ArrayList<>();
 
         // Exibindo/ocultando RadioGroup por evento de Click Listener
         /*
@@ -99,5 +106,9 @@ public class MainActivity extends AppCompatActivity {
         telefoneEditText.setText("");
         emailEditText.setText("");
         nomeEditText.requestFocus();
+    }
+
+    public void adicionarTelefone(View botao){
+
     }
 }
