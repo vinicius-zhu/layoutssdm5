@@ -5,8 +5,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/innerTelefoneTextView"
-        android:text="Telefone"/>
+        android:id="@+id/innerEmailTextView"
+        android:text="Email"/>
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -14,14 +14,14 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/innerTelefoneEditText"
+            android:id="@+id/innerEmailEditText"
             android:layout_weight="1"
-            android:inputType="phone"/>
+            android:inputType="textEmailAddress"/>
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:entries="@array/tipo_telefone"
+            android:entries="@array/tipo_email"
             android:layout_weight="2"
-            android:id="@+id/innerTipoTelefoneSpinner"/>
+            android:id="@+id/innerTipoEmailSpinner"/>
     </LinearLayout>
 </LinearLayout>

@@ -10,8 +10,11 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private final String ESTADO_NOTIFICACAO_CHECKBOX = "ESTADO_NOTIFICACAO_CHECKBOX";
@@ -26,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout telefoneLinearLayout;
     private ArrayList<View> telefoneArrayList;
     private LayoutInflater layoutInflater;
+    private LinearLayout emailLinearLayout;
+    private ArrayList<View> emailArrayList;
+    private HashMap<String, Integer> telefoneList;
+    private HashMap<String, Integer> emailList;
 
 
     @Override
@@ -41,6 +48,14 @@ public class MainActivity extends AppCompatActivity {
         emailEditText = findViewById(R.id.emailEditText);
         telefoneLinearLayout = findViewById(R.id.telefoneLinearLayout);
         telefoneArrayList = new ArrayList<>();
+        emailLinearLayout = findViewById(R.id.emailLinearLayout);
+        emailArrayList = new ArrayList<>();
+        if (telefoneList == null) {
+            telefoneList = new HashMap<>();
+        }
+        if (emailList == null) {
+            emailList = new HashMap<>();
+        }
         layoutInflater = getLayoutInflater();
 
         // Exibindo/ocultando RadioGroup por evento de Click Listener
@@ -80,6 +95,24 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         outState.putBoolean(ESTADO_NOTIFICACAO_CHECKBOX, notificacoesCheckBox.isChecked());
         outState.putInt(NOTIFICACAO_RADIOBUTTON_SELECIONADO, notificacoesRadioGroup.getCheckedRadioButtonId());
+
+        emailList.clear();
+        for (View v : emailArrayList)
+        {
+            EditText innerEmailEditText = v.findViewById(R.id.innerEmailEditText);
+            Spinner innerTipoEmailSpinner = v.findViewById(R.id.innerTipoEmailSpinner);
+            emailList.put(innerEmailEditText.getText().toString(),innerTipoEmailSpinner.getSelectedItemPosition());
+        }
+        outState.putSerializable("LISTA_EMAILS",emailList);
+
+        telefoneList.clear();
+        for (View v : telefoneArrayList)
+        {
+            EditText innerTelefoneEditText = v.findViewById(R.id.innerTelefoneEditText);
+            Spinner innerTipoTelefoneSpinner = v.findViewById(R.id.innerTipoTelefoneSpinner);
+            telefoneList.put(innerTelefoneEditText.getText().toString(),innerTipoTelefoneSpinner.getSelectedItemPosition());
+        }
+        outState.putSerializable("LISTA_TELEFONES",telefoneList);
     }
 
     @Override
@@ -100,6 +133,28 @@ public class MainActivity extends AppCompatActivity {
         if (idRadioButtonSelecionado != -1) {
             notificacoesRadioGroup.check(idRadioButtonSelecionado);
         }
+
+        emailList = (HashMap<String,Integer>)savedInstanceState.getSerializable("LISTA_EMAILS");
+        for (Map.Entry<String, Integer> v : emailList.entrySet())
+        {
+            View novoEmailLayout = layoutInflater.inflate(R.layout.novo_email_layout,null);
+            ((EditText)novoEmailLayout.findViewById(R.id.innerEmailEditText)).setText(v.getKey());
+            ((Spinner)novoEmailLayout.findViewById(R.id.innerTipoEmailSpinner)).setSelection(v.getValue());
+            emailArrayList.add(novoEmailLayout);
+            emailLinearLayout.addView(novoEmailLayout);
+
+        }
+
+        telefoneList = (HashMap<String, Integer>)savedInstanceState.getSerializable("LISTA_TELEFONES");
+        for (Map.Entry<String, Integer> v : telefoneList.entrySet())
+        {
+            View novoTelefoneLayout = layoutInflater.inflate(R.layout.novo_telefone_layout,null);
+            ((EditText)novoTelefoneLayout.findViewById(R.id.innerTelefoneEditText)).setText(v.getKey());
+            ((Spinner)novoTelefoneLayout.findViewById(R.id.innerTipoTelefoneSpinner)).setSelection(v.getValue());
+            telefoneArrayList.add(novoTelefoneLayout);
+            telefoneLinearLayout.addView(novoTelefoneLayout);
+
+        }
     }
 
     public void limparFormulario(View botao){
@@ -108,7 +163,12 @@ public class MainActivity extends AppCompatActivity {
         nomeEditText.setText("");
         telefoneEditText.setText("");
         emailEditText.setText("");
+        telefoneArrayList.clear();
+        telefoneLinearLayout.removeAllViews();
+        emailArrayList.clear();
+        emailLinearLayout.removeAllViews();
         nomeEditText.requestFocus();
+
     }
 
     public void adicionarTelefone(View botao){
@@ -117,6 +177,14 @@ public class MainActivity extends AppCompatActivity {
             View novoTelefoneLayout = layoutInflater.inflate(R.layout.novo_telefone_layout,null);
             telefoneArrayList.add(novoTelefoneLayout);
             telefoneLinearLayout.addView(novoTelefoneLayout);
+        }
+    }
+    public void adicionarEmail(View botao){
+        if (botao.getId() == R.id.adicionarEmailButton){
+
+            View novoEmailLayout = layoutInflater.inflate(R.layout.novo_email_layout,null);
+            emailArrayList.add(novoEmailLayout);
+            emailLinearLayout.addView(novoEmailLayout);
         }
     }
 }

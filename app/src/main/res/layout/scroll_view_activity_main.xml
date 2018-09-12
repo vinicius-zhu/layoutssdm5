@@ -20,8 +20,8 @@
             android:id="@+id/emailTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:text="E-mail" />
+            android:text="E-mail Principal"
+            android:textSize="18sp" />
 
 
 
@@ -31,12 +31,25 @@
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress" />
 
+        <LinearLayout
+            android:id="@+id/emailLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" />
+
+        <Button
+            android:id="@+id/adicionarEmailButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="adicionarEmail"
+            android:text="Adicionar Email" />
+
         <TextView
             android:id="@+id/telefoneTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:text="Telefone Principal" />
+            android:text="Telefone Principal"
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/telefoneEditText"
